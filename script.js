@@ -7,27 +7,40 @@ const advertisementsData = [
   },
 
   {
-    title: "Ad 1",
+    title: "Ad 2",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
     contact: "contact1@example.com",
   },
   {
-    title: "Ad 1",
+    title: "Ad 3",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
     contact: "contact1@example.com",
   },
   {
-    title: "Ad 1",
+    title: "Ad 4",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
     contact: "contact1@example.com",
   },
+  {
+    title: "Ad 5",
+    description: "This is the first advertisement",
+    image: "https://placehold.co/150",
+    contact: "contact1@example.com",
+  },
+  {
+    title: "Ad 6",
+    description: "This is the first advertisement",
+    image: "https://placehold.co/150",
+    contact: "contact1@example.com",
+  }
 ];
 
-const showAds = () => {
+const showAds = (ads) => {
   const advertisementsContainer = document.getElementById("advertisements");
+  advertisementsContainer.innerHTML = ""; 
 
   /*<div class="card mb-4 col-md-4">
         <img class="card-img-top" src="https://placehold.co/150" alt="Ad 1">
@@ -40,7 +53,7 @@ const showAds = () => {
           <button class="btn btn-info btn-block" onclick="alert('Contact: contact1@example.com')">Details</button>
         </div>
       </div>*/
-  advertisementsData.map((ad) => {
+      ads.map((ad) => {
     const adCard = document.createElement("div");
     adCard.classList.add("card", "mb-4", "col-md-4");
 
@@ -87,4 +100,18 @@ const showAds = () => {
   });
 };
 
-showAds();
+showAds(advertisementsData);
+
+
+const filteredAds=()=>{
+  const title = document.getElementById("filterTitle").value.toLowerCase();
+  const filteredAdvertisements = advertisementsData.filter(ad => 
+    ad.title.toLowerCase().includes(title)
+  );
+      showAds(filteredAdvertisements);
+}
+
+document.getElementById("filterTitle").addEventListener("input", filteredAds);
+
+
+
