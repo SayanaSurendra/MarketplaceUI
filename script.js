@@ -10,31 +10,31 @@ const advertisementsData = [
     title: "Ad 2",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
-    contact: "contact1@example.com",
+    contact: "contact2@example.com",
   },
   {
     title: "Ad 3",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
-    contact: "contact1@example.com",
+    contact: "contact3@example.com",
   },
   {
     title: "Ad 4",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
-    contact: "contact1@example.com",
+    contact: "contact4@example.com",
   },
   {
     title: "Ad 5",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
-    contact: "contact1@example.com",
+    contact: "contact5@example.com",
   },
   {
     title: "Ad 6",
     description: "This is the first advertisement",
     image: "https://placehold.co/150",
-    contact: "contact1@example.com",
+    contact: "contact6@example.com",
   }
 ];
 
@@ -75,8 +75,25 @@ const showAds = (ads) => {
 
     const adContact = document.createElement("p");
     adContact.classList.add("card-text");
-    adContact.textContent = ad.contact;
-    adContact.onclick = () => alert(`Contact: ${ad.contact}`);
+
+    const hiddenContact=document.createElement("span");
+    hiddenContact.textContent="***";
+    hiddenContact.style.cursor="pointer";
+    adContact.appendChild(hiddenContact);
+
+    let isContactVisible = false;
+    hiddenContact.onclick=()=> {
+      if (isContactVisible) {
+        hiddenContact.textContent = "***"; 
+      } else {
+        hiddenContact.textContent = ad.contact; 
+      }
+      isContactVisible = !isContactVisible; 
+    };
+
+
+
+    
 
     adCardbody.appendChild(adTitle);
     adCardbody.appendChild(adDescription);
